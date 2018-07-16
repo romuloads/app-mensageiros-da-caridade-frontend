@@ -1,1 +1,0 @@
-# app_mensageiros_da_caridade_frontend
