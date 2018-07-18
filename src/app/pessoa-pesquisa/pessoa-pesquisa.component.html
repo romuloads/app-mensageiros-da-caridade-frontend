@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <h1>Pesquisa de Pessoas</h1>
+      </div>
+      <div class="ui-g-12 ui-fluid">
+        <label>Nome</label>
+        <input pInputText type="text" >
+      </div>
+      <div class="ui-g-12">
+        <button pButton  type="button" label="Pesquisar"></button>
+      </div>
+    </div>
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <p-table [value]="pessoas" [responsive]="true"
+        [paginator]="true" [rows]="2" [totalRecords]="4">
+          <ng-template pTemplate="header">
+              <tr>
+                  <th>Nome</th>
+                  <th>Email</th>
+                  <th class="col-data">Data de Nasc.</th>
+                  <th class="col-data">Ativo</th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-pessoa>
+              <tr>
+                  <td>
+                    <span class="ui-column-title">Nome</span>
+                    {{pessoa.nome}}
+                  </td>
+                  <td>
+                    <span class="ui-column-title">Email</span>
+                    {{pessoa.email}}
+                  </td>
+                  <td class="col-data">
+                    <span class="ui-column-title">Data de Nasc.</span>
+                    {{pessoa.data_nascimento}}
+                  </td>
+                  <td class="col-data">
+                    <span class="ui-column-title">Ativo</span>
+                    <a href="javascript:;" [pTooltip]="pessoa.ativo ? 'Desativar' : 'Ativar'"
+                    tooltipPosition="top">
+                      {{ pessoa.ativo ? 'Ativo' : 'Inativo' }}
+                    </a>
+                  </td>
+              </tr>
+          </ng-template>
+        </p-table>
+      </div>
+      <div class="ui-g-12">
+          <a pButton label="Nova Pessoa" ></a>
+      </div>
+    </div>
+  </div>

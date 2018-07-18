@@ -1,0 +1,65 @@
+<div class="container">
+  <form autocomplete="off" #f="ngForm">
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <h1>Nova Pessoa</h1>
+      </div>
+      <div class="ui-g-12">
+          <p-selectButton [options]="ativoDesativo" ></p-selectButton>
+        </div>
+      <div class="ui-g-12 ui-md-8 ui-fluid" >
+        <label>Nome</label>
+        <input pInputText type="text" name="nome" ngModel #nome="ngModel" required minlength="3">
+        <app-message [control]="nome" error="required" texto="Informe o nome!"></app-message>
+        <app-message [control]="nome" error="minlength"
+          texto="Mínimo de {{ nome.errors?.minlength?.requiredLength }} caracteres!">
+        </app-message>
+      </div>
+      <div class="ui-g-12 ui-md-4 ui-fluid" >
+          <label>Data de Nascimento</label>
+          <p-calendar dateFormat="dd/mm/yy" [locale]="pt" [showButtonBar]="true" name="dataNacsimento"
+            ngModel #dataNacsimento="ngModel" required minlength="10">
+          </p-calendar>
+      </div>
+      <div class="ui-g-12 ui-md-4 ui-fluid" >
+          <label>Email</label>
+          <input pInputText type="text" name="email" ngModel #email="ngModel" required minlength="5" >
+          <app-message [control]="email" error="required" texto="Informe o email!"></app-message>
+          <app-message [control]="email" error="minlength"
+          texto="Mínimo de {{ email.errors?.minlength?.requiredLength }} caracteres!"></app-message>
+      </div>
+      <div class="ui-g-12 ui-md-4 ui-fluid" >
+          <label>Senha</label>
+          <input pInputText type="password">
+      </div>
+      <div class="ui-g-12 ui-md-4 ui-fluid" >
+          <label>Tipo</label>
+          <p-dropdown [options]="tiposPessoa" [autoWidth]= false
+            #tipo="ngModel" required ngModel name=tipoPessoa #tipoPessoa="ngModel">
+          </p-dropdown>
+      </div>
+      <div class="ui-g-12 ui-md-6 ui-fluid" >
+          <label>Celular</label>
+          <p-inputMask  mask="(99)9.9999-9999" ngModel name="celular"
+            #celular="ngModel" >
+          </p-inputMask>
+
+      </div>
+      <div class="ui-g-12 ui-md-6 ui-fluid" >
+          <label>Telefone Fixo</label>
+          <p-inputMask  mask="(99)9999-9999"></p-inputMask>
+      </div>
+
+      <div class="ui-g-12 ui-fluid" >
+        <label>Observação</label>
+        <textarea pInputTextarea rows="3"></textarea>
+      </div>
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+        <button pButton type="button" label="Novo" class="ui-button-info" ></button>
+        <a href="javascript:;">Voltar para a pesquisa</a>
+      </div>
+
+    </div>
+  </form>
+</div>
